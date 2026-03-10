@@ -63,12 +63,7 @@ async def trading_loop():
             features     = feed.get_features()
             _spike_probs = snn.encode_input(features)
             _current_action, _current_conf = snn.decode_output()
-            token_info = feed.current_token_info()
-            reward = trader.execute(
-                _current_action, feed.price, _current_conf,
-                token_name=token_info.get('ticker', ''),
-                market_cap=token_info.get('market_cap', 0.0),
-            )
+            reward = trader.execute(_current_action, feed.price, _current_conf)
             snn.set_reward(reward)
 
             if feed.price > 0:

@@ -103,12 +103,6 @@ class PriceFeed:
                 print(f'[PriceFeed] Axiom auth failed: {e} — using simulation')
 
         self._use_sim = True
-        self._sim_names = [
-            'PEPE','BONK','WIF','POPCAT','MOODENG','PNUT','GOAT','FWOG',
-            'RETARDIO','MICHI','CHEEMS','GIGA','NEIRO','PONKE','BOME',
-            'MYRO','SLERF','ZEUS','BODEN','SHARK','TURBO','DEGEN','SMOL',
-            'HARAMBE','KIBBLE','WOJAK','COPE','ROPE','MOON','PUMP',
-        ]
         asyncio.create_task(self._sim_loop())
         print('[PriceFeed] Running in simulation mode')
 
@@ -181,19 +175,13 @@ class PriceFeed:
         volume = abs(np.random.normal(50 * vm, 10 * vm))
         liq    = abs(np.random.normal(10 * vm, 3 * vm))
 
-        ticker = self._sim_names[self._sim_step_n % len(self._sim_names)]
         self.history.append({
             'price':     self._sim_price,
             'volume':    volume,
             'liquidity': liq,
             'sentiment': self._sim_sentiment,
-            'name':      ticker,
+            'name':      f'SIM{self._sim_step_n}',
         })
-        # Update current token so trades get the name
-        self.current = TokenEvent(
-            name=ticker, ticker=ticker, address='',
-            market_cap=self._sim_price, liquidity=liq, volume=volume, protocol='sim',
-        )
         self._sim_step_n += 1
 
     # Fetch is now a no-op (WebSocket is push-based); kept for interface compat

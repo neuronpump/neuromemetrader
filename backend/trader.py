@@ -18,21 +18,15 @@ class Position:
     size:        float
     entry_price: float
     entry_step:  int
-    token_name:  str = ''
-    market_cap:  float = 0.0
 
 
 @dataclass
 class Trade:
-    action:       str
-    price:        float
-    pnl:          float
-    ret_pct:      float
-    step:         int
-    token_name:   str = ''
-    market_cap:   float = 0.0
-    buy_amount:   float = 0.0
-    sell_amount:  float = 0.0
+    action:      str
+    price:       float
+    pnl:         float
+    ret_pct:     float
+    step:        int
 
 
 class PaperTrader:
@@ -45,8 +39,7 @@ class PaperTrader:
         self.equity_curve: deque = deque([INITIAL_CASH], maxlen=600)
         self._step = 0
 
-    def execute(self, action: str, price: float, confidence: float,
-                token_name: str = '', market_cap: float = 0.0) -> float:
+    def execute(self, action: str, price: float, confidence: float) -> float:
         reward = 0.0
         equity = self.total_equity(price)
         self._step += 1
@@ -57,8 +50,7 @@ class PaperTrader:
             if cost <= self.cash:
                 tokens        = size_usd / price
                 self.cash    -= cost
-                self.position = Position(tokens, price, self._step,
-                                         token_name=token_name, market_cap=market_cap)
+                self.position = Position(tokens, price, self._step)
 
         elif action == "SELL" and self.position is not None:
             proceeds   = self.position.size * price * (1.0 - SLIPPAGE)
@@ -67,13 +59,7 @@ class PaperTrader:
             self.cash += proceeds
             self.realised_pnl += pnl
             ret = pnl / (cost_basis + 1e-9)
-            self.trades.append(Trade(
-                action="SELL", price=price, pnl=pnl, ret_pct=ret * 100, step=self._step,
-                token_name=self.position.token_name,
-                market_cap=market_cap,
-                buy_amount=self.position.entry_price * self.position.size,
-                sell_amount=proceeds,
-            ))
+            self.trades.append(Trade("SELL", price, pnl, ret * 100, self._step))
             if pnl >= 0:
                 self.wins += 1
                 reward     = min(5.0, ret * 50)
@@ -134,12 +120,10 @@ class PaperTrader:
             "equity_curve":   list(self.equity_curve)[-100:],
             "recent_trades":  [
                 {
-                    "token_name":  t.token_name or "UNKNOWN",
-                    "market_cap":  round(t.market_cap, 2),
-                    "buy_amount":  round(t.buy_amount, 2),
-                    "sell_amount": round(t.sell_amount, 2),
-                    "pnl":         round(t.pnl, 2),
-                    "ret_pct":     round(t.ret_pct, 2),
+                    "pnl":     round(t.pnl, 2),
+                    "ret_pct": round(t.ret_pct, 2),
+                    "price":   t.price,
+                    "step":    t.step,
                 }
                 for t in self.trades[-10:]
             ],
