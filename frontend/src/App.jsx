@@ -95,16 +95,6 @@ export default function App() {
 
         {/* Token selector */}
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
-          {isSim !== undefined && (
-            <span style={{
-              fontSize: 10, padding: '2px 8px', borderRadius: 4,
-              background: isSim ? '#2a1500' : '#001a0a',
-              color: isSim ? '#ff8c00' : '#00e65a',
-              border: `1px solid ${isSim ? '#553300' : '#005522'}`,
-            }}>
-              {isSim ? '⚡ SIMULATED' : '🟢 LIVE'}
-            </span>
-          )}
           <div style={{
             width: 8, height: 8, borderRadius: '50%',
             background: connected ? '#00e65a' : '#e63232',
