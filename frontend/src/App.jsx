@@ -81,7 +81,7 @@ export default function App() {
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
         <div>
           <h1 style={{ fontSize: 24, fontWeight: 'bold', color: '#00d4ff', letterSpacing: 2 }}>
-            NEUROMEMETRADER
+            NEUROPUMP
           </h1>
           <div style={{ fontSize: 11, color: '#406080', letterSpacing: 1 }}>
             200-NEURON SNN · STDP LEARNING · SOLANA MEMECOINS
@@ -270,7 +270,7 @@ export default function App() {
       </div>
 
       <div style={{ marginTop: 20, textAlign: 'center', fontSize: 10, color: '#303050', letterSpacing: 1 }}>
-        NEUROMEMETRADER · PAPER TRADING ONLY · NOT FINANCIAL ADVICE
+        NEUROPUMP · PAPER TRADING ONLY · NOT FINANCIAL ADVICE
       </div>
     </div>
   )
