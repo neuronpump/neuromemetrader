@@ -86,7 +86,7 @@ export default function App() {
             WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
             textShadow: 'none', filter: 'drop-shadow(0 0 12px #00d4ff88)',
           }}>
-            NEUROPUMP
+            NEURONPUMP
           </h1>
           <div style={{ fontSize: 10, color: '#304060', letterSpacing: 2, marginTop: 2 }}>
             200-NEURON SNN · STDP LEARNING · SOLANA MEMECOINS
@@ -283,7 +283,7 @@ export default function App() {
       </div>
 
       <div style={{ marginTop: 20, textAlign: 'center', fontSize: 10, color: '#303050', letterSpacing: 1 }}>
-        NEUROPUMP · PAPER TRADING ONLY · NOT FINANCIAL ADVICE
+        NEURONPUMP · PAPER TRADING ONLY · NOT FINANCIAL ADVICE
       </div>
     </div>
   )
