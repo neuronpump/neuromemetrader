@@ -85,26 +85,12 @@ class PriceFeed:
         return 0.0
 
     async def start(self):
-        """Authenticate and start WebSocket in background."""
-        if AXIOM_EMAIL and AXIOM_PASSWORD:
-            try:
-                from axiomtradeapi import AxiomTradeClient, AxiomAuth
-                auth   = AxiomAuth()
-                tokens = await auth.login(AXIOM_EMAIL, AXIOM_PASSWORD)
-                self._client = AxiomTradeClient(
-                    auth_token=tokens['auth_token'],
-                    refresh_token=tokens['refresh_token'],
-                )
-                self._use_sim = False
-                asyncio.create_task(self._listen())
-                print('[PriceFeed] Axiom Trade connected — streaming live launches')
-                return
-            except Exception as e:
-                print(f'[PriceFeed] Axiom auth failed: {e} — using simulation')
-
+        """Start price feed in simulation mode."""
         self._use_sim = True
-        asyncio.create_task(self._sim_loop())
+        for _ in range(60):
+            self._sim_step()
         print('[PriceFeed] Running in simulation mode')
+        asyncio.create_task(self._sim_loop())
 
     async def _listen(self):
         """Stream new token launches from Axiom WebSocket."""
@@ -138,10 +124,10 @@ class PriceFeed:
                 })
 
     async def _sim_loop(self):
-        """Geometric Brownian Motion fallback — fires a new simulated 'token' every tick."""
+        """Geometric Brownian Motion fallback."""
         while True:
             self._sim_step()
-            await asyncio.sleep(2.0)
+            await asyncio.sleep(0.5)
 
     def _sim_step(self):
         if self._sim_regime == 'normal':
