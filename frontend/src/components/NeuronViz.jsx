@@ -216,7 +216,7 @@ export default function NeuronViz({ snn, topology, action }) {
       ctx.font = 'bold 11px "Share Tech Mono", monospace'
       ctx.shadowBlur = 0
       ctx.globalAlpha = 0.6
-      ctx.fillStyle = `rgb(${COLORS.input.join(',')})`;  ctx.fillText('INPUT',  pos[0].x - 20, 14)
+      ctx.fillStyle = `rgb(${COLORS.input.join(',')})`;  ctx.fillText('INPUT',  pos[0].x - 10, 14)
       ctx.fillStyle = `rgb(${COLORS.hidden.join(',')})`;  ctx.fillText('HIDDEN', pos[n_input].x - 24, 14)
       ctx.fillStyle = `rgb(${COLORS.output.join(',')})`;  ctx.fillText('OUTPUT', pos[n_input + n_hidden].x - 24, 14)
       ctx.globalAlpha = 1
