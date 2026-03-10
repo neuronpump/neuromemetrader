@@ -84,8 +84,10 @@ export default function NeuronViz({ snn, topology, action }) {
     const canvas = canvasRef.current
     if (!canvas || !topology) return
 
-    const W = canvas.width
-    const H = canvas.height
+    const W = canvas.offsetWidth  || canvas.width
+    const H = canvas.offsetHeight || canvas.height
+    canvas.width  = W
+    canvas.height = H
     const { n_input, n_hidden, n_output } = topology
     const total = n_input + n_hidden + n_output
 
