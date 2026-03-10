@@ -41,7 +41,7 @@ TRADE_EVERY_STEPS  = 10
 
 async def broadcast(msg: dict):
     dead = set()
-    for ws in clients:
+    for ws in list(clients):
         try:
             await ws.send_text(json.dumps(msg))
         except Exception:
