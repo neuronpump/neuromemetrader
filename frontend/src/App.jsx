@@ -95,7 +95,7 @@ export default function App() {
 
         <div style={{ marginLeft: 32, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ fontSize: 11, color: '#406080', letterSpacing: 1 }}>CONTRACT ADDRESS</div>
-          <div style={{ fontSize: 15, color: '#607090', letterSpacing: 1, fontWeight: 'bold' }}>TBA</div>
+          <div style={{ fontSize: 13, color: '#00d4ff', letterSpacing: 1, fontWeight: 'bold', wordBreak: 'break-all', maxWidth: 320 }}>8SCjzbiszz5fUNwwDQDQpG1BceRSQuCfeGqb3NDPpump</div>
         </div>
 
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
