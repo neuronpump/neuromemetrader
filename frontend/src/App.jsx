@@ -75,15 +75,20 @@ export default function App() {
   const isSim   = tick?.is_sim
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0a0a14', padding: '16px', color: '#e0e0f0' }}>
+    <div style={{ minHeight: '100vh', background: '#05050f', padding: '16px', color: '#e0e0f0' }}>
 
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}>
         <div>
-          <h1 style={{ fontSize: 24, fontWeight: 'bold', color: '#00d4ff', letterSpacing: 2 }}>
+          <h1 style={{
+            fontSize: 32, fontWeight: 900, letterSpacing: 4,
+            background: 'linear-gradient(90deg, #00d4ff, #a855f7)',
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            textShadow: 'none', filter: 'drop-shadow(0 0 12px #00d4ff88)',
+          }}>
             NEUROPUMP
           </h1>
-          <div style={{ fontSize: 11, color: '#406080', letterSpacing: 1 }}>
+          <div style={{ fontSize: 10, color: '#304060', letterSpacing: 2, marginTop: 2 }}>
             200-NEURON SNN · STDP LEARNING · SOLANA MEMECOINS
           </div>
         </div>
@@ -195,7 +200,9 @@ export default function App() {
         {/* Left: neuron viz + price chart */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
           <div style={{
-            background: '#0d0d1a', borderRadius: 10, border: '1px solid #1a1a3a',
+            background: '#08080f', borderRadius: 12,
+            border: '1px solid #1a1a4a',
+            boxShadow: '0 0 30px #0d0d3a, inset 0 0 30px #05050f',
             padding: 8, height: 440,
           }}>
             <div style={{ fontSize: 11, color: '#405070', letterSpacing: 1, marginBottom: 4 }}>

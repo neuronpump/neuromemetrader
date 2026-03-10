@@ -4,12 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEUROPUMP · AI Neuron Solana Trading</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { background: #0a0a14; color: #e0e0f0; font-family: 'Courier New', monospace; overflow-x: hidden; }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #111; }
-      ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+      body {
+        background: #05050f;
+        color: #e0e0f0;
+        font-family: 'Share Tech Mono', 'Courier New', monospace;
+        overflow-x: hidden;
+      }
+      h1 { font-family: 'Orbitron', monospace; }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #0a0a14; }
+      ::-webkit-scrollbar-thumb { background: #1a1a3a; border-radius: 2px; }
+
+      /* Scanline overlay */
+      body::before {
+        content: '';
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(0,0,0,0.05) 2px,
+          rgba(0,0,0,0.05) 4px
+        );
+        pointer-events: none;
+        z-index: 9999;
+      }
     </style>
   </head>
   <body>
