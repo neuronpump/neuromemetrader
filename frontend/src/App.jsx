@@ -93,8 +93,24 @@ export default function App() {
           </div>
         </div>
 
-        {/* Token selector */}
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
+          <a
+            href="https://x.com/NeuronPump"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex', alignItems: 'center', gap: 6,
+              padding: '5px 12px', borderRadius: 6, textDecoration: 'none',
+              background: '#0f0f1a', border: '1px solid #222244',
+              color: '#e0e0f0', fontSize: 12, fontFamily: 'inherit',
+              cursor: 'pointer',
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.734-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            @NeuronPump
+          </a>
           <div style={{
             width: 8, height: 8, borderRadius: '50%',
             background: connected ? '#00e65a' : '#e63232',
