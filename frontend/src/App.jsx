@@ -91,6 +91,9 @@ export default function App() {
           <div style={{ fontSize: 10, color: '#304060', letterSpacing: 2, marginTop: 2 }}>
             200-NEURON SNN · STDP LEARNING · SOLANA MEMECOINS
           </div>
+          <div style={{ fontSize: 11, color: '#406080', letterSpacing: 1, marginTop: 4 }}>
+            CA: <span style={{ color: '#607090' }}>TBA</span>
+          </div>
         </div>
 
         <div style={{ marginLeft: 'auto', display: 'flex', gap: 8, alignItems: 'center' }}>
