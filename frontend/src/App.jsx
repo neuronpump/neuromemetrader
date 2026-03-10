@@ -28,13 +28,19 @@ function TradeRow({ trade }) {
   const positive = trade.pnl >= 0
   return (
     <div style={{
-      display: 'flex', gap: 12, fontSize: 11, padding: '4px 0',
-      borderBottom: '1px solid #1a1a2e', color: positive ? '#00e65a' : '#e63232',
+      padding: '6px 0', borderBottom: '1px solid #1a1a2e', fontSize: 11,
     }}>
-      <span style={{ color: '#606080', width: 50 }}>#{trade.step}</span>
-      <span>${trade.price?.toFixed(8)}</span>
-      <span style={{ marginLeft: 'auto' }}>{positive ? '+' : ''}{trade.pnl?.toFixed(2)} USD</span>
-      <span>({positive ? '+' : ''}{trade.ret_pct?.toFixed(1)}%)</span>
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 2 }}>
+        <span style={{ color: '#00d4ff', fontWeight: 'bold' }}>{trade.token_name || 'UNKNOWN'}</span>
+        <span style={{ color: positive ? '#00e65a' : '#e63232', fontWeight: 'bold' }}>
+          {positive ? '+' : ''}{trade.pnl?.toFixed(2)} USD ({positive ? '+' : ''}{trade.ret_pct?.toFixed(1)}%)
+        </span>
+      </div>
+      <div style={{ display: 'flex', gap: 12, color: '#505070' }}>
+        <span>MCap: <span style={{ color: '#808090' }}>{trade.market_cap?.toFixed(1)} SOL</span></span>
+        <span>Bought: <span style={{ color: '#808090' }}>${trade.buy_amount?.toFixed(2)}</span></span>
+        <span>Sold: <span style={{ color: '#808090' }}>${trade.sell_amount?.toFixed(2)}</span></span>
+      </div>
     </div>
   )
 }
